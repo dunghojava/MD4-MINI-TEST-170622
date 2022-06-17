@@ -18,7 +18,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="index.js"></script>
+
+
 </head>
+<style>
+    img {
+        height: 100px;
+    }
+</style>
 
 <body>
 <div class="container">
@@ -73,11 +80,18 @@
             <!-- BUTTON CREATE -->
             <button id="btn-create" type="button" class="btn btn-primary">Create</button>
 
+            <!-- UP FIREBASE -->
+            <span class="input-group-text">Image</span>
+            <progress value="0" max="100" id="uploader">0%</progress>
+            <input type="file" value="upload" accept=".jpg" id="fileButton">
+            <div id="imgDiv"></div>
+
         </div>
     </div>
 </div>
 
 </body>
+<script src="firebase.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" rel="stylesheet"/>

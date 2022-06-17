@@ -14,6 +14,7 @@ $(document).ready(function (){
         post.content = $('#content').val();
         post.createAt = $('#createAt').val();
         post.likes = $('#likes').val();
+        post.image = resultImage();
         console.log('post ===== ', post);
         let postOBJ = JSON.stringify(post);
         $.ajax({
@@ -48,6 +49,7 @@ function pagePost(){
                     '<th>Content</th>' +
                     '<th>CreateAt</th>' +
                     '<th>Like</th>' +
+                    '<th>Image</th>' +
                     '<th>Edit</th>' +
                     '<th>Delete</th>' +
                     '</tr>' +
@@ -57,6 +59,7 @@ function pagePost(){
                     '<td class="table-light">' +'<p>'+item.content+'</p>'+ '</td>'+
                     '<td class="table-light">' +'<p>'+item.createAt+'</p>'+ '</td>'+
                     '<td class="table-light">' +'<p>'+item.likes+'</p>'+ '</td>'+
+                    '<td>' + '<img ' + 'class =' + "show_image " + 'src=' + item.image + '>' + '</td>' +
                     '<td><button class="btn btn-primary" onclick="editPost('+item.id+')">Edit</button> </td>'+
                     '<td><button class="btn btn-danger" onclick="deletePost('+item.id+')">Delete</button> </td>'+
                     '</tr>'
@@ -79,6 +82,7 @@ function editPost(id){
             $('#content').val(data.content);
             $('#createAt').val(data.createAt);
             $('#likes').val(data.likes);
+            $('#imgDiv').val(data.image);
         }
     })
 }
@@ -113,4 +117,5 @@ function resetFormCreate() {
     $('#createAt').val('');
     $('#likes').val('');
     $('#id').val('');
+    $('#imgDiv').val('');
 }

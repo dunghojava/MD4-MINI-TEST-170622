@@ -20,6 +20,16 @@ public class Post {
 
     private int likes;
 
+    private String image;
+
+    public Post(String title, String content, Date createAt, int likes, String image) {
+        this.title = title;
+        this.content = content;
+        this.createAt = createAt;
+        this.likes = likes;
+        this.image = image;
+    }
+
     public Post() {
     }
 
@@ -32,6 +42,14 @@ public class Post {
 
     public Long getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setId(Long id) {
