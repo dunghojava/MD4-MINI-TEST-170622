@@ -17,4 +17,6 @@ public interface IPostService extends IGeneralService<Post> {
     Iterable<Post> searchByYear(int year);
 
     Iterable<Post> searchByTitleAndYear(String title, int year);
+
+    Iterable<Post> findAllByCreateAtBetween(int from, int to);
 }

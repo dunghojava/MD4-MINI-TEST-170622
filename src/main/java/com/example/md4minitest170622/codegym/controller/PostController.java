@@ -46,6 +46,12 @@ public class PostController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
+    @GetMapping("/search/year")
+    public ResponseEntity<Iterable<Post>> findAllByCreateAtBetween(@RequestParam("from") int from, @RequestParam("to") int to) {
+        List<Post> posts = (List<Post>) postService.findAllByCreateAtBetween(from, to);
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+
     @GetMapping("/show/like")
     public ResponseEntity<Iterable<Post>> showListByLike() {
         List<Post> posts = (List<Post>) postService.showListByLikeAsc();

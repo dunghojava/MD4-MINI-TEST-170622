@@ -53,4 +53,8 @@ public class PostService implements IPostService{
     public Iterable<Post> searchByTitleAndYear(String title, int year) {
         return postRepository.searchByTitleAndYear(title, year);
     }
+
+    public Iterable<Post> findAllByCreateAtBetween(int from, int to) {
+        return postRepository.findAllByCreateAtBetween(from, to);
+    }
 }

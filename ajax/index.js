@@ -165,6 +165,58 @@ function searchPost() {
 
 //SEARCH BY TIME
 function searchByTime() {
+    let from = document.getElementById("begin_time").value;
+    console.log("title ========= ", from);
+    let to = document.getElementById("end_time").value;
+    console.log("year ========= ", to);
+    $.ajax({
+        url: 'http://localhost:8080/api/posts/search/year?from=' + from + "&to=" + to,
+        method: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            console.log("searchbetween========",data)
+            // display(data);
+            listPost();
+            let container = $('#pagePost');
+            container.pagination({
+                dataSource: 'http://localhost:8080/api/posts/search/year?from=' + from + "&to=" + to,
+                locator: 'items',
+                totalNumber: 100,
+                pageSize: 5,
+                callback: function (response, pagination) {
+                    let dataHtml = '<table border="1" class="table">'
+                    let pageStart = (pagination.pageNumber - 1) * pagination.pageSize;
+                    let pageEnd = pageStart + pagination.pageSize;
+                    let pageItems = response.slice(pageStart, pageEnd);
+                    $.each(pageItems, function (index, item) {
+                        dataHtml +=
+                            '<tr class="table-success">' +
+                            '<th >Id</th>' +
+                            '<th >Title</th>' +
+                            '<th>Content</th>' +
+                            '<th>CreateAt</th>' +
+                            '<th>Like</th>' +
+                            '<th>Image</th>' +
+                            '<th>Edit</th>' +
+                            '<th>Delete</th>' +
+                            '</tr>' +
+                            '<tr>' +
+                            '<td class="table-danger">' + '<p>' + item.id + '</p>' + '</td>' +
+                            '<td class="table-warning">' + '<p>' + item.title + '</p>' + '</td>' +
+                            '<td class="table-light">' + '<p>' + item.content + '</p>' + '</td>' +
+                            '<td class="table-light">' + '<p>' + item.createAt + '</p>' + '</td>' +
+                            '<td class="table-light">' + '<p>' + item.likes + '</p>' + '</td>' +
+                            '<td>' + '<img ' + 'class =' + "show_image " + 'src=' + item.image + '>' + '</td>' +
+                            '<td><button class="btn btn-primary" onclick="editPost(' + item.id + ')">Edit</button> </td>' +
+                            '<td><button class="btn btn-danger" onclick="deletePost(' + item.id + ')">Delete</button> </td>' +
+                            '</tr>'
+                    })
+                    dataHtml += '</table>';
+                    container.prev().html(dataHtml);
+                }
+            })
+        }
+    })
 
 }
 
