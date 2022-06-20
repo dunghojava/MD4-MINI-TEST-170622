@@ -32,13 +32,22 @@
 <div class="container">
     <div class="row">
         <div class="col-12" style="margin-top: 20px; width: 350px">
-            <!-- SEARCH -->
+            <!-- SEARCH TITLE AND YEAR -->
             <div class="input-group mb-3">
                 <input id="search_title" type="text"  class="form-control"
                        placeholder="Search ..." aria-describedby="basic-addon2"><br>
                 <input id="search_year" type="number" class="form-control" value="0"
                        placeholder="Search ..." aria-describedby="basic-addon2">
-                <button><span class="input-group-text" id="basic-addon2" onclick="searchPost()" >Search</span></button>
+                <button><span class="input-group-text" id="basic-addon2" onclick="searchPost()" >Search Title & Year</span></button>
+            </div> <br><br><br>
+
+            <!-- SEARCH TITLE AND YEAR -->
+            <div class="input-group mb-3">
+                <input id="begin_time" type="text"  class="form-control"
+                       placeholder="Search ..." aria-describedby="basic-addon2"><br>
+                <input id="end_time" type="number" class="form-control" value="0"
+                       placeholder="Search ..." aria-describedby="basic-addon2">
+                <button><span class="input-group-text" id="basic-addon3" onclick="searchByTime()" >Search Title & Year</span></button>
             </div>
 
 
