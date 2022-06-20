@@ -11,4 +11,10 @@ public interface IPostService extends IGeneralService<Post> {
     Iterable<Post> showListByLikeAsc();
 
     Iterable<Post> showFourNewPost();
+
+    Iterable<Post> searchByTitle(String title);
+
+    Iterable<Post> searchByYear(int year);
+
+    Iterable<Post> searchByTitleAndYear(String title, int year);
 }

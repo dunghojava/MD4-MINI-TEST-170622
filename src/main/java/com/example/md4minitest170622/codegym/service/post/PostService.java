@@ -41,4 +41,16 @@ public class PostService implements IPostService{
     public void remove(Long id) {
         postRepository.deleteById(id);
     }
+
+    public Iterable<Post> searchByTitle(String title) {
+        return postRepository.searchByTitle(title);
+    }
+
+    public Iterable<Post> searchByYear(int year) {
+        return postRepository.searchByYear(year);
+    }
+
+    public Iterable<Post> searchByTitleAndYear(String title, int year) {
+        return postRepository.searchByTitleAndYear(title, year);
+    }
 }

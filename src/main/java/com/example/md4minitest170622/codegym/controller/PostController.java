@@ -33,6 +33,19 @@ public class PostController {
         return new ResponseEntity<>(posts, HttpStatus.OK);
     }
 
+    @GetMapping("/search/many")
+    public ResponseEntity<Iterable<Post>> searchByTitleAndYear(@RequestParam("title") String title, @RequestParam("year") int year) {
+        List<Post> posts = null;
+        if (title.isEmpty()) {
+            posts = (List<Post>) postService.searchByYear(year);
+        } else if (year == 0) {
+            posts = (List<Post>) postService.searchByTitle(title);
+        }else if (!title.isEmpty() && year != 0) {
+            posts = (List<Post>) postService.searchByTitleAndYear(title, year);
+        }
+        return new ResponseEntity<>(posts, HttpStatus.OK);
+    }
+
     @GetMapping("/show/like")
     public ResponseEntity<Iterable<Post>> showListByLike() {
         List<Post> posts = (List<Post>) postService.showListByLikeAsc();
@@ -75,5 +88,6 @@ public class PostController {
         post.setId(postOptional.get().getId());
         return new ResponseEntity<>(postService.save(post), HttpStatus.OK);
     }
+
 
 }

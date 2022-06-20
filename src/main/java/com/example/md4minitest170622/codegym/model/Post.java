@@ -1,6 +1,8 @@
 package com.example.md4minitest170622.codegym.model;
 
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -16,6 +18,7 @@ public class Post {
 
     private String content;
 
+    @CreatedDate
     private Date createAt;
 
     private int likes;
